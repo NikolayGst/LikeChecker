@@ -27,42 +27,25 @@ fun  getProfileUser() : Observable<VKApiUserFull> {
     }
 }
 
-/*
-*   private void getFriends(String id) {
-        friendsList.clear();
-        if (id != null && !id.equals("")) {
-            vkRequest = VKApi.friends().get(VKParameters.from(
-                    VKApiConst.USER_ID,id,
-                    VKApiConst.FIELDS, "id,first_name,last_name,sex,bdate,city",
-               /* VKApiConst.COUNT, 100,*/
-                    "order", "name"));
-        } else {
-        vkRequest = VKApi.friends().get(VKParameters.from(
-                VKApiConst.FIELDS, "id,first_name,last_name,sex,bdate,city",
-               /* VKApiConst.COUNT, 100,*/
-                "order", "hints"));
-        }
-        vkRequest.executeWithListener(new VKRequest.VKRequestListener() {
-            @Override
-            public void onComplete(VKResponse response) {
-                super.onComplete(response);
-
-                VKUsersArray vkUsersArray = (VKUsersArray) response.parsedModel;
-
-                for (VKApiUserFull user : vkUsersArray) {
-                    friendsList.add(new Friends(user.first_name + " " + user.last_name, user.id));
-                }
-
-                mFriendsAdapter.setFriendsList(friendsList);
+fun  getUser(id: String) : Observable<VKApiUserFull> {
+    return Observable.create {
+        val request = VKApi.users().get(VKParameters.from(VKApiConst.USER_IDS, id, VKApiConst.FIELDS, "id,first_name,last_name,photo_200"))
+        request.executeWithListener(object : VKRequest.VKRequestListener() {
+            override fun onComplete(response: VKResponse) {
+                super.onComplete(response)
+                val vkList = response.parsedModel as VKList<*>
+                val vkUser = vkList[0] as VKApiUserFull
+                it.onNext(vkUser)
+                it.onComplete()
             }
 
-            @Override
-            public void onError(VKError error) {
-                super.onError(error);
-                dismiss();
+            override fun onError(error: VKError) {
+                super.onError(error)
+                it.onError(error.httpError)
             }
-        });
-    }*/
+        })
+    }
+}
 
 fun getFriends(id: String = "") : Observable<List<Friend>> {
     return Observable.create {

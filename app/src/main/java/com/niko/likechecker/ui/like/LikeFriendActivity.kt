@@ -1,20 +1,31 @@
 package com.niko.likechecker.ui.like
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.arellomobile.mvp.MvpAppCompatActivity
+import com.arellomobile.mvp.presenter.InjectPresenter
 import com.niko.likechecker.R
-import com.niko.likechecker.extensions.logs
+import com.niko.likechecker.extensions.toast
+import com.vk.sdk.api.model.VKApiUserFull
+import kotlinx.android.synthetic.main.activity_like_friend.*
 
-class LikeFriendActivity : AppCompatActivity() {
+class LikeFriendActivity : MvpAppCompatActivity(), LikeView {
 
-    lateinit var id: String
+    @InjectPresenter
+    lateinit var likePresenter: LikePresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_like_friend)
+        likePresenter.loadUserProfile(intent.extras.getString("id"))
 
-        id = intent.extras.getString("id")
+    }
 
-        logs(id)
+    override fun onSuccessLoadProfile(vkUser: VKApiUserFull) {
+        toolbar.title = vkUser.first_name + " " + vkUser.last_name
+        setSupportActionBar(toolbar)
+    }
+
+    override fun onErrorLoad(throwable: Throwable) {
+        toast(throwable.localizedMessage)
     }
 }

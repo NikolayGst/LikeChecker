@@ -16,8 +16,7 @@ class MainPresenter : BasePresenter<MainView>() {
     }
 
     private fun loadProfile() {
-        track(getProfileUser().doOnNext { logs("${it.first_name} ${it.last_name}") }
-                .subscribe(viewState::onSuccessLoadProfile, viewState::onErrorLoad))
+        track(getProfileUser().subscribe(viewState::onSuccessLoadProfile, viewState::onErrorLoad))
     }
 
      fun loadFriends() {
