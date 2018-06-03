@@ -75,6 +75,7 @@
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"
+          android:text="durov"
           android:layout_gravity="center_vertical"
           android:background="@null"
           android:textColor="@color/colorPrimaryDark" />
@@ -82,6 +83,7 @@
         <ImageView
           android:id="@+id/selectFriend"
           android:layout_width="@dimen/main.selectFriend.size"
+          android:foreground="?attr/selectableItemBackgroundBorderless"
           android:layout_height="@dimen/main.selectFriend.size"
           android:layout_marginLeft="@dimen/main.selectFriend.margin.small"
           android:layout_gravity="center_vertical"

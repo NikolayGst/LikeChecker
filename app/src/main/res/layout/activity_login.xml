@@ -50,6 +50,7 @@
     android:layout_marginLeft="@dimen/login.btn.margin.biggest"
     android:layout_marginRight="@dimen/login.btn.margin.biggest"
     android:layout_below="@id/txtAuth"
+    android:foreground="?attr/selectableItemBackground"
     android:background="@drawable/btn"
     android:text="@string/button.text.login"
     android:textColor="@android:color/white" />

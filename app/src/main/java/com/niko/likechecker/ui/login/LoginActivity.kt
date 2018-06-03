@@ -22,16 +22,16 @@ class LoginActivity : AppCompatActivity() {
             finish()
         } else {
             btnLogin.setOnClickListener {
-                VKSdk.login(this@LoginActivity, VKScope.GROUPS, VKScope.VIDEO, VKScope.WALL, VKScope.FRIENDS )
+                VKSdk.login(this@LoginActivity, VKScope.GROUPS, VKScope.VIDEO, VKScope.WALL, VKScope.FRIENDS)
             }
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (!VKSdk.onActivityResult(requestCode, resultCode, data, object : VKCallback<VKAccessToken> {
                     override fun onResult(res: VKAccessToken) {
                         // Пользователь успешно авторизовался
-                        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                        startActivity(Intent(applicationContext, MainActivity::class.java))
                         finish()
                     }
 
