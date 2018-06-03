@@ -1,0 +1,197 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="16dp"
+      android:background="@color/transp"
+      android:orientation="vertical">
+
+
+      <TextView
+        android:id="@+id/txtSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:paddingLeft="8dp"
+        android:gravity="center"
+        android:text="Настройки поиска"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp" />
+
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:orientation="vertical">
+
+        <TextView
+          android:id="@+id/txtTime"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="8dp"
+          android:paddingLeft="16dp"
+          android:text="Дата публикации записи"
+          android:textColor="@color/colorPrimaryDark"
+          android:textSize="18sp" />
+
+        <View
+          android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:layout_marginBottom="8dp"
+          android:background="@color/colorPrimaryDark" />
+
+        <RadioGroup
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+
+          <android.support.v7.widget.AppCompatRadioButton
+            android:id="@+id/radioWeek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="За наделю"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            android:theme="@style/RadioButtonTheme" />
+
+          <android.support.v7.widget.AppCompatRadioButton
+            android:id="@+id/radioMonth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="За месяц"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            android:theme="@style/RadioButtonTheme" />
+
+          <android.support.v7.widget.AppCompatRadioButton
+            android:id="@+id/radioAllDay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="За все время"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            android:theme="@style/RadioButtonTheme" />
+
+        </RadioGroup>
+
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:orientation="vertical">
+
+        <TextView
+          android:id="@+id/txtPeople"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="8dp"
+          android:paddingLeft="16dp"
+          android:text="Люди"
+          android:textColor="@color/colorPrimaryDark"
+          android:textSize="18sp" />
+
+        <View
+          android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:layout_marginBottom="8dp"
+          android:background="@color/colorPrimaryDark" />
+
+        <RadioGroup
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+          <android.support.v7.widget.AppCompatRadioButton
+            android:id="@+id/radioAll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="По всем друзьям"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            android:theme="@style/RadioButtonTheme" />
+
+          <android.support.v7.widget.AppCompatRadioButton
+            android:id="@+id/radioFriend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Конкретного друга"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            android:theme="@style/RadioButtonTheme" />
+
+          <android.support.v7.widget.AppCompatRadioButton
+            android:id="@+id/radioPeople"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Конкретного человека"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            android:theme="@style/RadioButtonTheme" />
+
+          <LinearLayout
+            android:id="@+id/lrEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:padding="8dp"
+            android:background="@drawable/bg_form"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <EditText
+              android:id="@+id/txtId"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:layout_gravity="center_vertical"
+              android:background="@null"
+              android:textColor="@color/colorPrimaryDark" />
+
+            <ImageView
+              android:id="@+id/selectFriend"
+              android:layout_width="32dp"
+              android:layout_height="32dp"
+              android:layout_marginLeft="8dp"
+              android:layout_gravity="center_vertical"
+              android:src="@mipmap/ic_friend" />
+
+
+          </LinearLayout>
+        </RadioGroup>
+
+      </LinearLayout>
+
+      <Button
+        android:id="@+id/btnScan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_below="@id/txtAuth"
+        android:background="@drawable/btn_dark"
+        android:text="Сканировать"
+        android:textColor="@color/colorPrimaryDark" />
+    </LinearLayout>
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="0dp" />
+  </LinearLayout>
+</ScrollView>

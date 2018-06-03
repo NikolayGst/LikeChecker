@@ -23,9 +23,13 @@ class LikeFriendActivity : MvpAppCompatActivity(), LikeView {
     override fun onSuccessLoadProfile(vkUser: VKApiUserFull) {
         toolbar.title = vkUser.first_name + " " + vkUser.last_name
         setSupportActionBar(toolbar)
+
+        viewPager.adapter = TabAdapter(supportFragmentManager, vkUser.id.toString(), this)
+        tabs.setupWithViewPager(viewPager)
     }
 
     override fun onErrorLoad(throwable: Throwable) {
         toast(throwable.localizedMessage)
+        finish()
     }
 }
