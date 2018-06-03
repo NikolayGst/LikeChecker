@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="login.title.margin.big">16dp</dimen>
+  <dimen name="login.title.text.size">35sp</dimen>
+  <dimen name="login.text.margin.one">1dp</dimen>
+  <dimen name="login.disc.text.size">16sp</dimen>
+  <dimen name="login.auth.margin.biggest">200dp</dimen>
+  <dimen name="login.auth.text.size">35sp</dimen>
+  <dimen name="login.btn.margin.big">16dp</dimen>
+  <dimen name="login.btn.margin.biggest">32dp</dimen>
+  <dimen name="login.author.margin.small">8dp</dimen>
+  <dimen name="login.author.text.size">16sp</dimen>
+  <dimen name="main.card.margin.big">16dp</dimen>
+  <dimen name="main.card.corner.radius">0dp</dimen>
+  <dimen name="main.card.content.padding">6dp</dimen>
+  <dimen name="main.exit.size">32dp</dimen>
+  <dimen name="main.title.margin.big">16dp</dimen>
+  <dimen name="main.title.padding.small">8dp</dimen>
+  <dimen name="main.title.text.size">25sp</dimen>
+  <dimen name="main.desc.margin.biggest">44dp</dimen>
+  <dimen name="main.desc.margin.big">16dp</dimen>
+  <dimen name="main.desc.padding.small">8dp</dimen>
+  <dimen name="main.desc.text.size">20sp</dimen>
+  <dimen name="main.lr.margin.small">8dp</dimen>
+  <dimen name="main.selectFriend.size">32dp</dimen>
+  <dimen name="main.selectFriend.margin.small">8dp</dimen>
+  <dimen name="main.selectScan.margin.big">16dp</dimen>
+  <dimen name="main.selectScan.padding.small">8dp</dimen>
+  <dimen name="main.selectScan.text.size">20sp</dimen>
+  <dimen name="main.icon.margin.small">8dp</dimen>
+</resources>

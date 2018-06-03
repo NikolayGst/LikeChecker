@@ -1,0 +1,12 @@
+<resources>
+  <string name="app_name">LikeChecker</string>
+  <string name="textview.text.desc.like">Проверка лайков</string>
+  <string name="textview.text.auth">Авторизация</string>
+  <string name="button.text.login">Вход</string>
+  <string name="textview.text.author">Густилин Николай</string>
+  <string name="textview.text.welcome">Добро пожаловать</string>
+  <string name="textview.text.select.id">Введи или выбери ID человечка :)</string>
+  <string name="textview.text.selectScan">Что будем сканировать?</string>
+  <string name="textview.text.search.like.friend">Поиск лайков по друзьям</string>
+  <integer name="com_vk_sdk_AppId">5705388</integer>
+</resources>
