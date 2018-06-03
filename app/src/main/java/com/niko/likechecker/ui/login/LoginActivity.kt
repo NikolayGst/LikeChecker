@@ -3,9 +3,8 @@ package com.niko.likechecker.ui.login
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.niko.likechecker.ui.main.MainActivity
 import com.niko.likechecker.R
-import com.niko.likechecker.extensions.launchActivity
+import com.niko.likechecker.ui.main.MainActivity
 import com.vk.sdk.VKAccessToken
 import com.vk.sdk.VKCallback
 import com.vk.sdk.VKScope

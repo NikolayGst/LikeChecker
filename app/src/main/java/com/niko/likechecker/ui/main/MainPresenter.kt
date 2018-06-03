@@ -1,7 +1,6 @@
 package com.niko.likechecker.ui.main
 
 import com.arellomobile.mvp.InjectViewState
-import com.niko.likechecker.extensions.logs
 import com.niko.likechecker.model.fastAdapterItems.FriendItem
 import com.niko.likechecker.rx.getFriends
 import com.niko.likechecker.rx.getProfileUser
