@@ -51,7 +51,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
     }
 
     override fun onSuccessLoadProfile(vkUser: VKApiUserFull) {
-        txtTitle.setText("${getString(R.string.textview_text_welcome)}, ${vkUser.first_name}!")
+        txtTitle.text = "${getString(R.string.textview_text_welcome)}, ${vkUser.first_name}!"
     }
 
     override fun onSuccessLoadFriends(friends: List<FriendItem>) {

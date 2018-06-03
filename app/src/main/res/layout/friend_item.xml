@@ -9,20 +9,20 @@
     android:id="@+id/txtName"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp"
+    android:padding="@dimen/item.friend.padding.small"
     android:fontFamily="sans-serif-light"
     android:textColor="@android:color/black"
-    android:textSize="18sp" />
+    android:textSize="@dimen/item.friend.text.size.biggest" />
 
   <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/txtId"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="8dp"
-    android:paddingLeft="8dp"
-    android:paddingRight="8dp"
+    android:paddingBottom="@dimen/item.friend.padding.small"
+    android:paddingLeft="@dimen/item.friend.padding.small"
+    android:paddingRight="@dimen/item.friend.padding.small"
     android:fontFamily="sans-serif-light"
     android:textColor="@android:color/darker_gray"
-    android:textSize="16sp" />
+    android:textSize="@dimen/item.friend.text.size.big" />
 
 </LinearLayout>
