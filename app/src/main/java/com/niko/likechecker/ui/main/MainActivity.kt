@@ -1,5 +1,6 @@
 package com.niko.likechecker.ui.main
 
+
 import android.content.Intent
 import android.os.Bundle
 import com.arellomobile.mvp.MvpAppCompatActivity
@@ -48,14 +49,6 @@ class MainActivity : MvpAppCompatActivity(), MainView {
             VKSdk.logout()
             finish()
         }
-    }
-
-    override fun showProgress() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun hideProgress() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onSuccessLoadProfile(vkUser: VKApiUserFull) {

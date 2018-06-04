@@ -18,7 +18,7 @@ class MainPresenter : BasePresenter<MainView>() {
         track(getProfileUser().subscribe(viewState::onSuccessLoadProfile, viewState::onErrorLoad))
     }
 
-     fun loadFriends() {
+    fun loadFriends() {
         track(getFriends()
                 .flatMap { Observable.fromIterable(it).map(::FriendItem).toList().toObservable() }
                 .subscribe(viewState::onSuccessLoadFriends, viewState::onErrorLoad))

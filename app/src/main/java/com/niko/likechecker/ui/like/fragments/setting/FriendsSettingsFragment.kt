@@ -10,6 +10,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.niko.likechecker.R
 import com.niko.likechecker.extensions.toast
 import com.niko.likechecker.model.Friend
+import com.niko.likechecker.model.Setting
 import com.niko.likechecker.model.fastAdapterItems.FriendItem
 import com.niko.likechecker.ui.common.FriendView
 import com.niko.likechecker.ui.dialog.DialogFriendFragment
@@ -25,19 +26,18 @@ class FriendsSettingsFragment : MvpAppCompatFragment(), FriendView, View.OnClick
     lateinit var settingsPresenter: SettingsPresenter
 
     private var time: Long = 0
-    private var vkUserId = "1"
+    private var vkUserId = 1
     private var peopleId = 0
 
     companion object {
-        fun newInstance(vkUserId: String): FriendsSettingsFragment {
+        fun newInstance(vkUserId: Int): FriendsSettingsFragment {
             val friendsSettingsFragment = FriendsSettingsFragment()
             friendsSettingsFragment.vkUserId = vkUserId
             return friendsSettingsFragment
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_friends_settings, container, false)
     }
 
@@ -51,9 +51,7 @@ class FriendsSettingsFragment : MvpAppCompatFragment(), FriendView, View.OnClick
         radioAll.setOnClickListener(this)
         radioPeople.setOnClickListener(this)
 
-        btnScan.setOnClickListener {
-            toast("vkUserId: $vkUserId time: $time peopleId: $peopleId")
-        }
+        btnScan.setOnClickListener { EventBus.getDefault().post(Setting(vkUserId, peopleId, time)) }
     }
 
     override fun onClick(view: View) {
@@ -75,14 +73,6 @@ class FriendsSettingsFragment : MvpAppCompatFragment(), FriendView, View.OnClick
 
     override fun onSuccessLoadFriends(friends: List<FriendItem>) {
         DialogFriendFragment.newInstance(friends).show(fragmentManager, "dialog_friends")
-    }
-
-    override fun showProgress() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun hideProgress() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onErrorLoad(throwable: Throwable) {

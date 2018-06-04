@@ -10,8 +10,8 @@ import io.reactivex.Observable
 @InjectViewState
 class SettingsPresenter : BasePresenter<FriendView>() {
 
-    fun loadFriends(id: String) {
-        getFriends(id)
+    fun loadFriends(id: Int) {
+        getFriends(id.toString())
                 .flatMap { Observable.fromIterable(it).map(::FriendItem).toList().toObservable() }
                 .subscribe(viewState::onSuccessLoadFriends, viewState::onErrorLoad)
     }
