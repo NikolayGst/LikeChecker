@@ -62,6 +62,7 @@ class FriendsSettingsFragment : MvpAppCompatFragment(), FriendView, View.OnClick
             R.id.radioAll -> {
                 peopleId = 0
                 lrEdit.visibility = View.GONE
+                txtId. text = null
                 selectFriend.setOnClickListener(null)
             }
             R.id.radioPeople -> {
