@@ -50,6 +50,14 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         }
     }
 
+    override fun showProgress() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun hideProgress() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun onSuccessLoadProfile(vkUser: VKApiUserFull) {
         txtTitle.text = "${getString(R.string.textview_text_welcome)}, ${vkUser.first_name}!"
     }

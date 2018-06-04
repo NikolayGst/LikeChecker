@@ -25,7 +25,7 @@
         android:gravity="center"
         android:text="Настройки поиска"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="20sp" />
+        android:textSize="22sp" />
 
 
       <LinearLayout
@@ -78,6 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="За все время"
+            android:checked="true"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
             android:theme="@style/RadioButtonTheme" />
@@ -116,16 +117,8 @@
             android:id="@+id/radioAll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="По всем друзьям"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
-            android:theme="@style/RadioButtonTheme" />
-
-          <android.support.v7.widget.AppCompatRadioButton
-            android:id="@+id/radioFriend"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Конкретного друга"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
             android:theme="@style/RadioButtonTheme" />
@@ -134,8 +127,7 @@
             android:id="@+id/radioPeople"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Конкретного человека"
+            android:text="Конкретного друга / человека"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
             android:theme="@style/RadioButtonTheme" />
@@ -186,6 +178,7 @@
         android:layout_marginRight="32dp"
         android:layout_below="@id/txtAuth"
         android:background="@drawable/btn_dark"
+        android:foreground="?attr/selectableItemBackground"
         android:text="Сканировать"
         android:textColor="@color/colorPrimaryDark" />
     </LinearLayout>

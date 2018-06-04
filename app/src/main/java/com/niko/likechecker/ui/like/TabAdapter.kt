@@ -10,7 +10,7 @@ import com.niko.likechecker.ui.like.fragments.setting.FriendsSettingsFragment
 class TabAdapter(fm: FragmentManager, private val id: String, private val context: Context) : FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int) = when (position) {
-        0 -> FriendsSettingsFragment()
+        0 -> FriendsSettingsFragment.newInstance(id)
         1 -> FriendsScannerFragment()
         else -> null
     }

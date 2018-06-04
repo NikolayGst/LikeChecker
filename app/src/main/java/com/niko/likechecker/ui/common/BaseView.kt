@@ -1,12 +1,15 @@
 package com.niko.likechecker.ui.common
 
+import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.SingleStateStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
-import com.vk.sdk.api.model.VKApiUserFull
 
 @StateStrategyType(SingleStateStrategy::class)
-interface ProfileView : BaseView {
+interface BaseView : MvpView {
 
-    fun onSuccessLoadProfile(vkUser: VKApiUserFull)
+    fun showProgress()
 
+    fun hideProgress()
+
+    fun onErrorLoad(throwable: Throwable)
 }

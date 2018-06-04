@@ -2,11 +2,11 @@ package com.niko.likechecker.ui.common
 
 import com.arellomobile.mvp.viewstate.strategy.SingleStateStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
-import com.vk.sdk.api.model.VKApiUserFull
+import com.niko.likechecker.model.fastAdapterItems.FriendItem
 
 @StateStrategyType(SingleStateStrategy::class)
-interface ProfileView : BaseView {
+interface FriendView : BaseView {
 
-    fun onSuccessLoadProfile(vkUser: VKApiUserFull)
+    fun onSuccessLoadFriends(friends: List<FriendItem>)
 
 }
