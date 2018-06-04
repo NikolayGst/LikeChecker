@@ -31,4 +31,7 @@
   <dimen name="item.friend.padding.small">8dp</dimen>
   <dimen name="item.friend.text.size.big">16sp</dimen>
   <dimen name="item.friend.text.size.biggest">18sp</dimen>
+  <dimen name="dialog.edit.margin.small">4dp</dimen>
+  <dimen name="dialog.edit.padding.small">8dp</dimen>
+  <dimen name="dialog.edit.text.size">20sp</dimen>
 </resources>

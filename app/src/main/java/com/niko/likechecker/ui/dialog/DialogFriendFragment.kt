@@ -1,17 +1,17 @@
 package com.niko.likechecker.ui.dialog
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
 import com.niko.likechecker.R
+import com.niko.likechecker.extensions.searchObservable
 import com.niko.likechecker.model.fastAdapterItems.FriendItem
+import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.dialog_fragment_friend.*
 import org.greenrobot.eventbus.EventBus
 
@@ -20,9 +20,10 @@ class DialogFriendFragment : DialogFragment() {
     private lateinit var itemAdapter: ItemAdapter<FriendItem>
     private lateinit var fastAdapter: FastAdapter<FriendItem>
     private lateinit var listFriends: List<FriendItem>
+    private lateinit var searchObservable: Disposable
 
     companion object {
-        fun newInstance(list: List<FriendItem>) : DialogFriendFragment {
+        fun newInstance(list: List<FriendItem>): DialogFriendFragment {
             val dialogFriendFragment = DialogFriendFragment()
             dialogFriendFragment.listFriends = list
             return dialogFriendFragment
@@ -45,6 +46,9 @@ class DialogFriendFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         itemAdapter = ItemAdapter()
+
+        itemAdapter.itemFilter.withFilterPredicate { item, constraint -> item.friend.name.toLowerCase().startsWith(constraint.toString().toLowerCase()) }
+
         fastAdapter = FastAdapter.with(itemAdapter)
 
         list.layoutManager = LinearLayoutManager(context)
@@ -53,11 +57,18 @@ class DialogFriendFragment : DialogFragment() {
 
         list.adapter = fastAdapter
 
+        searchObservable = editSearch.searchObservable().subscribe(itemAdapter::filter)
+
         fastAdapter.withOnClickListener { _, _, item, _ ->
             EventBus.getDefault().post(item.friend)
             dismiss()
             true
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        searchObservable.dispose()
     }
 
 }
