@@ -51,6 +51,7 @@ class FriendsScannerFragment : MvpAppCompatFragment(), ScannerView {
 
     @Subscribe
     fun settingEvent(setting: Setting) {
+        itemAdapter.clear()
         scannerPresenter.startScanning(setting)
     }
 
