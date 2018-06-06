@@ -1,5 +1,6 @@
 package com.niko.likechecker.rx
 
+import com.niko.likechecker.model.Album
 import com.niko.likechecker.model.Friend
 import com.niko.likechecker.model.Photo
 import com.vk.sdk.api.*
@@ -45,10 +46,10 @@ fun getUser(id: String): Observable<VKApiUserFull> {
     }
 }
 
-fun getAlbums(id: String): Observable<List<String>> {
+fun getAlbums(id: String): Observable<List<Album>> {
     return Observable.create {
 
-        val photos = mutableListOf<String>()
+        val list = mutableListOf<Album>()
 
         val photoRequest = VKRequest("photos.getAlbums", VKParameters.from(
                 VKApiConst.OWNER_ID, id,
@@ -61,9 +62,9 @@ fun getAlbums(id: String): Observable<List<String>> {
                 val jsonArray = response.json.getJSONObject("response").getJSONArray("items")
                 for (i in 0..(jsonArray.length() - 1)) {
                     val item = jsonArray.getJSONObject(i)
-                    photos.add(item.getString("id"))
+                    list.add(Album(item.getString("id"), item.getString("title")))
                 }
-                it.onNext(photos)
+                it.onNext(list)
                 it.onComplete()
             }
 

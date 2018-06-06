@@ -33,13 +33,10 @@ class ScannerPresenter : BasePresenter<ScannerView>() {
                 .doOnNext { logs("user: $it") }
                 //Получаем фото с профиля и стены и комбинируем
                 .flatMap { peopleId ->
-                    getAlbums(peopleId)
-                            .doOnNext { logs("albums: ${it.size}") }
-                            //поэлементно перебираем альбомы
-                            .flatMap { Observable.fromIterable(it) }
-                            //с задержкой 1 сек
-                            .delaySecond(1)
-                            .flatMap { getPhotos(peopleId, setting.time, it).onErrorReturn { emptyList() }}
+                    Observable.zip(
+                            getPhotos(peopleId, setting.time).onErrorReturn { emptyList() },
+                            getPhotos(peopleId, setting.time, albomId = "wall").onErrorReturn { emptyList() },
+                            margeImagesFunc)
                             .doOnNext { logs("photos: ${it.size}") }
                             //поэлементно перебираем фотографии
                             .flatMap { Observable.fromIterable(it) }
