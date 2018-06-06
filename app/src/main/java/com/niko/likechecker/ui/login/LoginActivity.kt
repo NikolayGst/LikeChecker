@@ -22,7 +22,7 @@ class LoginActivity : AppCompatActivity() {
             finish()
         } else {
             btnLogin.setOnClickListener {
-                VKSdk.login(this@LoginActivity, VKScope.GROUPS, VKScope.VIDEO, VKScope.WALL, VKScope.FRIENDS)
+                VKSdk.login(this@LoginActivity, VKScope.PHOTOS, VKScope.GROUPS, VKScope.VIDEO, VKScope.WALL, VKScope.FRIENDS)
             }
         }
     }

@@ -1,13 +1,12 @@
 package com.niko.likechecker.rx
 
 import com.niko.likechecker.model.Friend
+import com.niko.likechecker.model.Photo
 import com.vk.sdk.api.*
-import com.vk.sdk.api.model.VKApiUserFull
-import com.vk.sdk.api.model.VKList
-import com.vk.sdk.api.model.VKUsersArray
+import com.vk.sdk.api.model.*
 import io.reactivex.Observable
 
-fun  getProfileUser() : Observable<VKApiUserFull> {
+fun getProfileUser(): Observable<VKApiUserFull> {
     return Observable.create {
         val request = VKApi.users().get()
         request.executeWithListener(object : VKRequest.VKRequestListener() {
@@ -20,14 +19,13 @@ fun  getProfileUser() : Observable<VKApiUserFull> {
             }
 
             override fun onError(error: VKError) {
-                super.onError(error)
-                it.onError(error.httpError)
+                it.onError(Throwable(error.errorMessage))
             }
         })
     }
 }
 
-fun  getUser(id: String) : Observable<VKApiUserFull> {
+fun getUser(id: String): Observable<VKApiUserFull> {
     return Observable.create {
         val request = VKApi.users().get(VKParameters.from(VKApiConst.USER_IDS, id, VKApiConst.FIELDS, "id,first_name,last_name,photo_200"))
         request.executeWithListener(object : VKRequest.VKRequestListener() {
@@ -41,13 +39,110 @@ fun  getUser(id: String) : Observable<VKApiUserFull> {
 
             override fun onError(error: VKError) {
                 super.onError(error)
-                it.onError(error.httpError)
+                it.onError(Throwable(error.errorMessage))
             }
         })
     }
 }
 
-fun getFriends(id: String = "") : Observable<List<Friend>> {
+fun getAlbums(id: String): Observable<List<String>> {
+    return Observable.create {
+
+        val photos = mutableListOf<String>()
+
+        val photoRequest = VKRequest("photos.getAlbums", VKParameters.from(
+                VKApiConst.OWNER_ID, id,
+                "need_system", 1))
+
+        photoRequest.executeWithListener(object : VKRequest.VKRequestListener() {
+
+            override fun onComplete(response: VKResponse) {
+                super.onComplete(response)
+                val jsonArray = response.json.getJSONObject("response").getJSONArray("items")
+                for (i in 0..(jsonArray.length() - 1)) {
+                    val item = jsonArray.getJSONObject(i)
+                    photos.add(item.getString("id"))
+                }
+                it.onNext(photos)
+                it.onComplete()
+            }
+
+            override fun onError(error: VKError) {
+                super.onError(error)
+                it.onError(Throwable(error.errorMessage))
+            }
+        })
+    }
+}
+
+fun getPhotos(id: String, time: Long, albomId: String = "profile"): Observable<List<VKApiPhoto>> {
+    return Observable.create {
+
+        val photos = mutableListOf<VKApiPhoto>()
+
+        val photoRequest = VKRequest("photos.get", VKParameters.from(
+                VKApiConst.OWNER_ID, id,
+                VKApiConst.ALBUM_ID, albomId,
+                VKApiConst.REV, 1), VKPhotoArray::class.java)
+
+        photoRequest.executeWithListener(object : VKRequest.VKRequestListener() {
+
+            override fun onComplete(response: VKResponse) {
+                super.onComplete(response)
+                val vkPhotoArray = response.parsedModel as VKPhotoArray
+
+                for (vkApiPhoto in vkPhotoArray) {
+                    if (time == 0L) {
+                        photos.add(vkApiPhoto)
+                    } else {
+
+                        if (time < (vkApiPhoto.date * 1000)) {
+                            photos.add(vkApiPhoto)
+                        }
+                    }
+                }
+
+                it.onNext(photos)
+                it.onComplete()
+            }
+
+            override fun onError(error: VKError) {
+                super.onError(error)
+                it.onError(Throwable(error.errorMessage))
+            }
+        })
+    }
+}
+
+fun checkLike(userId: String, peopleId: String, photo: VKApiPhoto): Observable<Photo> {
+    return Observable.create {
+
+        val likeRequest = VKRequest("likes.isLiked", VKParameters.from(
+                "user_id", userId,
+                "type", "photo",
+                "owner_id", peopleId,
+                "item_id", photo.id))
+
+        likeRequest.executeWithListener(object : VKRequest.VKRequestListener() {
+            override fun onComplete(response: VKResponse) {
+                super.onComplete(response)
+                val liked = response.json.getJSONObject("response").getInt("liked")
+                if (liked == 1) {
+                    it.onNext(Photo(photo.id.toString(), peopleId, photo.photo_604, photo.date))
+                }
+                it.onComplete()
+            }
+
+            override fun onError(error: VKError) {
+                super.onError(error)
+                it.onError(Throwable(error.errorMessage))
+            }
+        })
+    }
+
+}
+
+fun getFriends(id: String = ""): Observable<List<Friend>> {
     return Observable.create {
 
         val friendsList = mutableListOf<Friend>()
@@ -78,7 +173,7 @@ fun getFriends(id: String = "") : Observable<List<Friend>> {
 
             override fun onError(error: VKError) {
                 super.onError(error)
-                it.onError(error.httpError)
+                it.onError(Throwable(error.errorMessage))
             }
         })
     }

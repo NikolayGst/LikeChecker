@@ -27,7 +27,7 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity android:name=".ui.like.LikeFriendActivity"></activity>
+    <activity android:name=".ui.like.LikeFriendActivity" android:screenOrientation="portrait"/>
   </application>
 
 </manifest>
