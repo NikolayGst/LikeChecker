@@ -2,7 +2,6 @@ package com.niko.likechecker.ui.like.fragments.scanner
 
 import com.arellomobile.mvp.InjectViewState
 import com.niko.likechecker.extensions.logs
-import com.niko.likechecker.model.Photo
 import com.niko.likechecker.model.Setting
 import com.niko.likechecker.rx.checkLike
 import com.niko.likechecker.rx.getAlbums
@@ -10,7 +9,6 @@ import com.niko.likechecker.rx.getFriends
 import com.niko.likechecker.rx.getPhotos
 import com.niko.likechecker.ui.common.BasePresenter
 import com.niko.likechecker.utils.delaySecond
-import com.niko.likechecker.utils.margeImagesFunc
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 
@@ -33,10 +31,13 @@ class ScannerPresenter : BasePresenter<ScannerView>() {
                 .doOnNext { logs("user: $it") }
                 //Получаем фото с профиля и стены и комбинируем
                 .flatMap { peopleId ->
-                    Observable.zip(
-                            getPhotos(peopleId, setting.time).onErrorReturn { emptyList() },
-                            getPhotos(peopleId, setting.time, albomId = "wall").onErrorReturn { emptyList() },
-                            margeImagesFunc)
+                    //получаем список альбомов и поэлементно перебираем их с задержкой в 1 секунду
+                    getAlbums(peopleId).flatMap { Observable.fromIterable(it) }
+                            .delaySecond(1)
+                            .doOnNext { logs("album $it") }
+                            .flatMap { getPhotos(peopleId, setting.time, it.id).flatMap { Observable.fromIterable(it) } }
+                            .toList()
+                            .toObservable()
                             .doOnNext { logs("photos: ${it.size}") }
                             //поэлементно перебираем фотографии
                             .flatMap { Observable.fromIterable(it) }

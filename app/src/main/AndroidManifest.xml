@@ -21,15 +21,13 @@
     <activity
       android:name=".ui.login.LoginActivity"
       android:screenOrientation="portrait">
-
-    </activity>
-    <activity android:name=".ui.like.LikeFriendActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+    <activity android:name=".ui.like.LikeFriendActivity" />
   </application>
 
 </manifest>

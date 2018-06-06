@@ -2,13 +2,11 @@ package com.niko.likechecker.ui.like.fragments.scanner
 
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
-
 import com.niko.likechecker.R
 import com.niko.likechecker.extensions.logs
 import com.niko.likechecker.extensions.toast

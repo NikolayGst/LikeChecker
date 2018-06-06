@@ -7,6 +7,7 @@ import com.vk.sdk.api.*
 import com.vk.sdk.api.model.*
 import io.reactivex.Observable
 
+//TODO сделать нормально обработку ошибок
 fun getProfileUser(): Observable<VKApiUserFull> {
     return Observable.create {
         val request = VKApi.users().get()

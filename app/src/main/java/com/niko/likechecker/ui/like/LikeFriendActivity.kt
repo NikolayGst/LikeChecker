@@ -6,7 +6,6 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.niko.likechecker.R
 import com.niko.likechecker.extensions.toast
 import com.niko.likechecker.model.Setting
-import com.niko.likechecker.rx.getAlbums
 import com.niko.likechecker.ui.common.ProfileView
 import com.vk.sdk.api.model.VKApiUserFull
 import kotlinx.android.synthetic.main.activity_like_friend.*
@@ -21,8 +20,7 @@ class LikeFriendActivity : MvpAppCompatActivity(), ProfileView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_like_friend)
-        //val id = intent.extras.getString("id")
-        val id = "261550430"
+        val id = intent.extras.getString("id")
         likePresenter.loadUserProfile(id)
 
     }
