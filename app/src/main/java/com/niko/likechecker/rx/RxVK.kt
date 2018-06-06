@@ -21,7 +21,7 @@ fun getProfileUser(): Observable<VKApiUserFull> {
             }
 
             override fun onError(error: VKError) {
-                it.onError(Throwable(error.errorMessage))
+                it.onError(Throwable(error.apiError.errorMessage))
             }
         })
     }
@@ -40,8 +40,7 @@ fun getUser(id: String): Observable<VKApiUserFull> {
             }
 
             override fun onError(error: VKError) {
-                super.onError(error)
-                it.onError(Throwable(error.errorMessage))
+                it.onError(Throwable(error.apiError.errorMessage))
             }
         })
     }
@@ -70,8 +69,7 @@ fun getAlbums(id: String): Observable<List<Album>> {
             }
 
             override fun onError(error: VKError) {
-                super.onError(error)
-                it.onError(Throwable(error.errorMessage))
+                it.onError(Throwable(error.apiError.errorMessage))
             }
         })
     }
@@ -109,8 +107,7 @@ fun getPhotos(id: String, time: Long, albomId: String = "profile"): Observable<L
             }
 
             override fun onError(error: VKError) {
-                super.onError(error)
-                it.onError(Throwable(error.errorMessage))
+                it.onError(Throwable(error.apiError.errorMessage))
             }
         })
     }
@@ -136,8 +133,7 @@ fun checkLike(userId: String, peopleId: String, photo: VKApiPhoto): Observable<P
             }
 
             override fun onError(error: VKError) {
-                super.onError(error)
-                it.onError(Throwable(error.errorMessage))
+                it.onError(Throwable(error.apiError.errorMessage))
             }
         })
     }
@@ -174,8 +170,7 @@ fun getFriends(id: String = ""): Observable<List<Friend>> {
             }
 
             override fun onError(error: VKError) {
-                super.onError(error)
-                it.onError(Throwable(error.errorMessage))
+                it.onError(Throwable(error.apiError.errorMessage))
             }
         })
     }

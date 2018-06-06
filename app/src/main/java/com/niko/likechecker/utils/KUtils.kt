@@ -3,10 +3,15 @@ package com.niko.likechecker.utils
 import io.reactivex.Observable
 import io.reactivex.Observable.just
 import java.util.*
+import java.util.concurrent.TimeUnit.MILLISECONDS
 import java.util.concurrent.TimeUnit.SECONDS
 
 fun <T> Observable<T>.delaySecond(second: Long): Observable<T> {
     return this.concatMap { just(it).delay(second, SECONDS) }
+}
+
+fun <T> Observable<T>.delayMillisecond(millis: Long): Observable<T> {
+    return this.concatMap { just(it).delay(millis, MILLISECONDS) }
 }
 
 fun getMonth(): Long {

@@ -32,15 +32,15 @@ class ScannerPresenter : BasePresenter<ScannerView>() {
                 //Получаем фото с профиля и стены и комбинируем
                 .flatMap { peopleId ->
                     //получаем список альбомов и поэлементно перебираем их с задержкой в 1 секунду
-                    getAlbums(peopleId).flatMap { Observable.fromIterable(it) }
+                    getAlbums(peopleId).onErrorReturn { emptyList() }.flatMapIterable { it }
                             .delaySecond(1)
                             .doOnNext { logs("album $it") }
-                            .flatMap { getPhotos(peopleId, setting.time, it.id).flatMap { Observable.fromIterable(it) } }
+                            .flatMap { getPhotos(peopleId, setting.time, it.id).onErrorReturn { emptyList() }.flatMapIterable { it } }
                             .toList()
                             .toObservable()
                             .doOnNext { logs("photos: ${it.size}") }
                             //поэлементно перебираем фотографии
-                            .flatMap { Observable.fromIterable(it) }
+                            .flatMapIterable { it }
                             //с задержкой 1 сек
                             .delaySecond(1)
                             //проверяем каждую фотографию человека/друга на лайк от проверяемого юзера
