@@ -3,6 +3,7 @@ package com.niko.likechecker.ui.like.fragments.scanner
 import com.arellomobile.mvp.InjectViewState
 import com.niko.likechecker.extensions.logs
 import com.niko.likechecker.model.Setting
+import com.niko.likechecker.model.fastAdapterItems.PhotoItem
 import com.niko.likechecker.rx.checkLike
 import com.niko.likechecker.rx.getAlbums
 import com.niko.likechecker.rx.getFriends
@@ -21,30 +22,29 @@ class ScannerPresenter : BasePresenter<ScannerView>() {
         //если 0, получаем у всех друзей их id
             0 -> getFriends(setting.vkUserId.toString())
                     .doOnNext { logs("users: " + it.size) }
-                    .flatMap { Observable.fromIterable(it).map { it.id.toString() } }
+                    .concatMapIterable { it }
+                    .map { it.id.toString() }
         //иначе получаем id конкретного друга / человека
             else -> Observable.just(setting.peopleId.toString())
         }
 
         track(peopleObservable
                 .delaySecond(1)
-                .doOnNext { logs("user: $it") }
-                //Получаем фото с профиля и стены и комбинируем
-                .flatMap { peopleId ->
+                .concatMap { peopleId ->
                     //получаем список альбомов и поэлементно перебираем их с задержкой в 1 секунду
-                    getAlbums(peopleId).onErrorReturn { emptyList() }.flatMapIterable { it }
+                    getAlbums(peopleId).onErrorReturn { emptyList() }.concatMapIterable { it }
                             .delaySecond(1)
                             .doOnNext { logs("album $it") }
-                            .flatMap { getPhotos(peopleId, setting.time, it.id).onErrorReturn { emptyList() }.flatMapIterable { it } }
+                            .concatMap { getPhotos(peopleId, setting.time, it.id).onErrorReturn { emptyList() }.concatMapIterable { it } }
                             .toList()
                             .toObservable()
                             .doOnNext { logs("photos: ${it.size}") }
                             //поэлементно перебираем фотографии
-                            .flatMapIterable { it }
+                            .concatMapIterable { it }
                             //с задержкой 1 сек
                             .delaySecond(1)
                             //проверяем каждую фотографию человека/друга на лайк от проверяемого юзера
-                            .flatMap { checkLike(setting.vkUserId.toString(), peopleId, it) }
+                            .concatMap { checkLike(setting.vkUserId.toString(), peopleId, it).map(::PhotoItem) }
                 }
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(viewState::onLikeSearched, viewState::onErrorLoad, viewState::onLikeSearchedEnd));

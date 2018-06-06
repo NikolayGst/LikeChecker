@@ -127,7 +127,7 @@ fun checkLike(userId: String, peopleId: String, photo: VKApiPhoto): Observable<P
                 super.onComplete(response)
                 val liked = response.json.getJSONObject("response").getInt("liked")
                 if (liked == 1) {
-                    it.onNext(Photo(photo.id.toString(), peopleId, photo.photo_604, photo.date))
+                    it.onNext(Photo(photo.id.toString(), peopleId, photo.photo_604, photo.date  * 1000))
                 }
                 it.onComplete()
             }
