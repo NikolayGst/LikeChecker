@@ -2,7 +2,6 @@ package com.niko.likechecker.ui.like.fragments.scanner
 
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -19,6 +18,7 @@ import com.niko.likechecker.extensions.postExecute
 import com.niko.likechecker.extensions.toast
 import com.niko.likechecker.model.Setting
 import com.niko.likechecker.model.fastAdapterItems.PhotoItem
+import com.niko.likechecker.utils.toUri
 import kotlinx.android.synthetic.main.fragment_friends_scanner.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -46,8 +46,8 @@ class FriendsScannerFragment : MvpAppCompatFragment(), ScannerView {
         listPhotos.adapter = fastAdapter
 
         fastAdapter.withOnClickListener { _, _, item, _ ->
-            val link = "http://vk.com/photo${item.photo.friendId}_${item.photo.id}"
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(link)))
+            val link = "http://vk.com/photo${item.photo.friendId}_${item.photo.id}".toUri()
+            startActivity(Intent(Intent.ACTION_VIEW, link))
             true
         }
     }

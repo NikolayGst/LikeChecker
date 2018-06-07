@@ -1,5 +1,6 @@
 package com.niko.likechecker.utils
 
+import android.net.Uri
 import io.reactivex.Observable
 import io.reactivex.Observable.just
 import java.text.SimpleDateFormat
@@ -20,6 +21,8 @@ fun Long.formatTime(): String {
     return dateFormat.format(Date(this))
 
 }
+
+fun String.toUri() = Uri.parse(this)
 
 fun getMonth(): Long {
     val d = Date()

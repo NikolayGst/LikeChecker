@@ -7,7 +7,7 @@
     android:id="@+id/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:src="@drawable/bg"
+    android:src="@drawable/bg_2"
     android:scaleType="centerCrop" />
 
   <TextView
@@ -56,13 +56,15 @@
     android:textColor="@android:color/white" />
 
   <TextView
-    android:layout_width="match_parent"
+    android:id="@+id/authorTelegram"
+    android:layout_width="wrap_content"
+    android:layout_centerHorizontal="true"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/login.author.margin.small"
     android:layout_alignParentBottom="true"
     android:fontFamily="sans-serif-light"
     android:gravity="center"
     android:text="@string/textview.text.author"
+    android:padding="8dp"
     android:textColor="@android:color/white"
     android:textSize="@dimen/login.author.text.size" />
 

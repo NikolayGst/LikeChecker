@@ -1,10 +1,12 @@
 package com.niko.likechecker.ui.login
 
 import android.content.Intent
+import android.content.Intent.ACTION_VIEW
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.niko.likechecker.R
 import com.niko.likechecker.ui.main.MainActivity
+import com.niko.likechecker.utils.toUri
 import com.vk.sdk.VKAccessToken
 import com.vk.sdk.VKCallback
 import com.vk.sdk.VKScope
@@ -23,6 +25,10 @@ class LoginActivity : AppCompatActivity() {
         } else {
             btnLogin.setOnClickListener {
                 VKSdk.login(this@LoginActivity, VKScope.PHOTOS, VKScope.GROUPS, VKScope.VIDEO, VKScope.WALL, VKScope.FRIENDS)
+            }
+
+            authorTelegram.setOnClickListener {
+                startActivity(Intent(ACTION_VIEW, "https://t.me/NikolayGst".toUri()))
             }
         }
     }
