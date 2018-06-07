@@ -10,6 +10,7 @@
   <dimen name="login.btn.margin.biggest">32dp</dimen>
   <dimen name="login.author.margin.small">8dp</dimen>
   <dimen name="login.author.text.size">16sp</dimen>
+
   <dimen name="main.card.margin.big">16dp</dimen>
   <dimen name="main.card.corner.radius">0dp</dimen>
   <dimen name="main.card.content.padding">6dp</dimen>
@@ -28,10 +29,40 @@
   <dimen name="main.selectScan.padding.small">8dp</dimen>
   <dimen name="main.selectScan.text.size">20sp</dimen>
   <dimen name="main.icon.margin.small">8dp</dimen>
+
   <dimen name="item.friend.padding.small">8dp</dimen>
   <dimen name="item.friend.text.size.big">16sp</dimen>
   <dimen name="item.friend.text.size.biggest">18sp</dimen>
+
   <dimen name="dialog.edit.margin.small">4dp</dimen>
   <dimen name="dialog.edit.padding.small">8dp</dimen>
   <dimen name="dialog.edit.text.size">20sp</dimen>
+
+  <dimen name="fg.setting.lr.margin.big">16dp</dimen>
+  <dimen name="fg.setting.text.margin.big">16dp</dimen>
+  <dimen name="fg.setting.text.margin.small">8dp</dimen>
+  <dimen name="fg.setting.title.text.size">22sp</dimen>
+  <dimen name="fg.setting.lr.padding.small">8dp</dimen>
+  <dimen name="fg.setting.desc.text.size">18sp</dimen>
+  <dimen name="fg.setting.view.height">1dp</dimen>
+  <dimen name="fg.setting.view.margin.small">8dp</dimen>
+  <dimen name="fg.setting.radio.text.size">16sp</dimen>
+  <dimen name="fg.setting.lr.margin.small">8dp</dimen>
+  <dimen name="fg.setting.image.size">32dp</dimen>
+  <dimen name="fg.setting.image.margin.small">8dp</dimen>
+  <dimen name="fg.setting.btnScan.margin.big">16dp</dimen>
+  <dimen name="fg.setting.btnScan.margin.biggest">32dp</dimen>
+
+  <dimen name="fg.scanner.text.margin.big">16dp</dimen>
+  <dimen name="fg.scanner.text.size.big">20sp</dimen>
+  <dimen name="fg.scanner.progress.margin.small">8dp</dimen>
+  <dimen name="fg.scanner.progress.size">32dp</dimen>
+
+  <dimen name="item.photo.card.margin.medium">4dp</dimen>
+  <dimen name="item.photo.card.margin.small">8dp</dimen>
+  <dimen name="item.photo.lr.padding">8dp</dimen>
+  <dimen name="item.photo.id.margin.small">8dp</dimen>
+  <dimen name="item.photo.text.size">18sp</dimen>
+  <dimen name="item.photo.size">200dp</dimen>
+
 </resources>

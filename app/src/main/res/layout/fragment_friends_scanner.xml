@@ -17,22 +17,22 @@
     android:id="@+id/txtScanning"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="16dp"
-    android:layout_marginTop="16dp"
+    android:layout_marginBottom="@dimen/fg.scanner.text.margin.big"
+    android:layout_marginTop="@dimen/fg.scanner.text.margin.big"
     android:textColor="@android:color/white"
-    android:textSize="20sp"/>
+    android:textSize="@dimen/fg.scanner.text.size.big"/>
 
   <ProgressBar
     android:theme="@style/ProgressBar"
     android:id="@+id/progressBar"
     android:layout_gravity="center_vertical"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
+    android:layout_marginLeft="@dimen/fg.scanner.progress.margin.small"
+    android:layout_marginRight="@dimen/fg.scanner.progress.margin.small"
     android:indeterminate="true"
     android:visibility="gone"
     style="?android:attr/progressBarStyleLarge"
-    android:layout_width="32dp"
-    android:layout_height="32dp"/>
+    android:layout_width="@dimen/fg.scanner.progress.size"
+    android:layout_height="@dimen/fg.scanner.progress.size"/>
  </LinearLayout>
 
 

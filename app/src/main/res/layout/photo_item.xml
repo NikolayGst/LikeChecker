@@ -7,38 +7,37 @@
   <android.support.v7.widget.CardView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="4dp"
-    android:layout_marginBottom="4dp"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp">
+    android:layout_marginTop="@dimen/item.photo.card.margin.medium"
+    android:layout_marginBottom="@dimen/item.photo.card.margin.medium"
+    android:layout_marginLeft="@dimen/item.photo.card.margin.small"
+    android:foreground="?attr/selectableItemBackground"
+    android:layout_marginRight="@dimen/item.photo.card.margin.small">
 
     <LinearLayout
-      android:id="@+id/lrClickItem"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:padding="8dp"
-      android:background="?attr/selectableItemBackground"
+      android:padding="@dimen/item.photo.lr.padding"
       android:orientation="vertical">
 
       <TextView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/txtId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="@dimen/item.photo.id.margin.small"
         android:fontFamily="sans-serif-light"
         android:textColor="@android:color/black"
-        android:textSize="18sp" />
+        android:textSize="@dimen/item.photo.text.size" />
 
       <ImageView
         android:id="@+id/photo"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="@dimen/item.photo.size"
         android:scaleType="centerCrop" />
 
       <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/item.photo.lr.padding"
         android:orientation="horizontal">
 
         <TextView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -49,7 +48,7 @@
           android:layout_weight="1"
           android:fontFamily="sans-serif-light"
           android:textColor="@android:color/black"
-          android:textSize="18sp" />
+          android:textSize="@dimen/item.photo.text.size" />
 
         <TextView xmlns:android="http://schemas.android.com/apk/res/android"
           android:id="@+id/txtItemId"
@@ -59,7 +58,7 @@
           android:fontFamily="sans-serif-light"
           android:gravity="right"
           android:textColor="@android:color/black"
-          android:textSize="18sp" />
+          android:textSize="@dimen/item.photo.text.size" />
       </LinearLayout>
 
     </LinearLayout>

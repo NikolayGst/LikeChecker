@@ -10,7 +10,7 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_margin="16dp"
+      android:layout_margin="@dimen/fg.setting.lr.margin.big"
       android:background="@color/transp"
       android:orientation="vertical">
 
@@ -19,68 +19,68 @@
         android:id="@+id/txtSettings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:paddingLeft="8dp"
+        android:layout_marginTop="@dimen/fg.setting.text.margin.big"
+        android:layout_marginBottom="@dimen/fg.setting.text.margin.big"
+        android:paddingLeft="@dimen/fg.setting.text.margin.small"
+        android:paddingRight="@dimen/fg.setting.text.margin.small"
         android:gravity="center"
-        android:text="Настройки поиска"
+        android:text="@string/textview.text.setting.search"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="22sp" />
+        android:textSize="@dimen/fg.setting.title.text.size" />
 
 
       <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:padding="@dimen/fg.setting.lr.padding.small"
         android:orientation="vertical">
 
         <TextView
           android:id="@+id/txtTime"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginBottom="8dp"
-          android:paddingLeft="16dp"
-          android:text="Дата публикации записи"
+          android:layout_marginBottom="@dimen/fg.setting.text.margin.small"
+          android:paddingLeft="@dimen/fg.setting.text.margin.big"
+          android:text="@string/textview.text.date.publish"
           android:textColor="@color/colorPrimaryDark"
-          android:textSize="18sp" />
+          android:textSize="@dimen/fg.setting.desc.text.size" />
 
         <View
           android:layout_width="match_parent"
-          android:layout_height="1dp"
-          android:layout_marginBottom="8dp"
+          android:layout_height="@dimen/fg.setting.view.height"
+          android:layout_marginBottom="@dimen/fg.setting.view.margin.small"
           android:background="@color/colorPrimaryDark" />
 
         <RadioGroup
           android:layout_width="match_parent"
           android:layout_height="wrap_content">
 
-
           <android.support.v7.widget.AppCompatRadioButton
             android:id="@+id/radioWeek"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="За неделю"
+            android:text="@string/radio.text.week"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
+            android:textSize="@dimen/fg.setting.radio.text.size"
             android:theme="@style/RadioButtonTheme" />
 
           <android.support.v7.widget.AppCompatRadioButton
             android:id="@+id/radioMonth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="За месяц"
+            android:text="@string/radio.text.month"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
+            android:textSize="@dimen/fg.setting.radio.text.size"
             android:theme="@style/RadioButtonTheme" />
 
           <android.support.v7.widget.AppCompatRadioButton
             android:id="@+id/radioAllDay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="За все время"
             android:checked="true"
+            android:text="@string/radio.text.all.time"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
+            android:textSize="@dimen/fg.setting.radio.text.size"
             android:theme="@style/RadioButtonTheme" />
 
         </RadioGroup>
@@ -90,23 +90,23 @@
       <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:padding="@dimen/fg.setting.lr.padding.small"
         android:orientation="vertical">
 
         <TextView
           android:id="@+id/txtPeople"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginBottom="8dp"
-          android:paddingLeft="16dp"
-          android:text="Люди"
+          android:layout_marginBottom="@dimen/fg.setting.text.margin.small"
+          android:paddingLeft="@dimen/fg.setting.text.margin.big"
+          android:text="@string/textview.text.people"
           android:textColor="@color/colorPrimaryDark"
-          android:textSize="18sp" />
+          android:textSize="@dimen/fg.setting.desc.text.size" />
 
         <View
           android:layout_width="match_parent"
-          android:layout_height="1dp"
-          android:layout_marginBottom="8dp"
+          android:layout_height="@dimen/fg.setting.view.height"
+          android:layout_marginBottom="@dimen/fg.setting.view.margin.small"
           android:background="@color/colorPrimaryDark" />
 
         <RadioGroup
@@ -118,47 +118,48 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="По всем друзьям"
+            android:text="@string/radio.text.all.friends"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
+            android:textSize="@dimen/fg.setting.radio.text.size"
             android:theme="@style/RadioButtonTheme" />
 
           <android.support.v7.widget.AppCompatRadioButton
             android:id="@+id/radioPeople"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Конкретного друга / человека"
+            android:text="@string/radio.single.people"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
+            android:textSize="@dimen/fg.setting.radio.text.size"
             android:theme="@style/RadioButtonTheme" />
 
           <LinearLayout
             android:id="@+id/lrEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:padding="8dp"
+            android:layout_marginTop="@dimen/fg.setting.lr.margin.small"
+            android:layout_marginBottom="@dimen/fg.setting.lr.margin.small"
+            android:layout_marginLeft="@dimen/fg.setting.lr.margin.big"
+            android:layout_marginRight="@dimen/fg.setting.lr.margin.big"
+            android:padding="@dimen/fg.setting.lr.margin.small"
             android:background="@drawable/bg_form"
             android:orientation="horizontal"
             android:visibility="gone">
 
-            <EditText
+            <android.support.v7.widget.AppCompatEditText
               android:id="@+id/txtId"
-              android:layout_width="match_parent"
+              android:layout_width="0dp"
               android:layout_height="wrap_content"
               android:layout_weight="1"
               android:layout_gravity="center_vertical"
               android:background="@null"
+              android:inputType="text"
               android:textColor="@color/colorPrimaryDark" />
 
-            <ImageView
+            <android.support.v7.widget.AppCompatImageView
               android:id="@+id/selectFriend"
-              android:layout_width="32dp"
-              android:layout_height="32dp"
-              android:layout_marginLeft="8dp"
+              android:layout_width="@dimen/fg.setting.image.size"
+              android:layout_height="@dimen/fg.setting.image.size"
+              android:layout_marginLeft="@dimen/fg.setting.image.margin.small"
               android:layout_gravity="center_vertical"
               android:src="@mipmap/ic_friend" />
 
@@ -172,14 +173,13 @@
         android:id="@+id/btnScan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_below="@id/txtAuth"
+        android:layout_marginTop="@dimen/fg.setting.btnScan.margin.big"
+        android:layout_marginBottom="@dimen/fg.setting.btnScan.margin.biggest"
+        android:layout_marginLeft="@dimen/fg.setting.btnScan.margin.biggest"
+        android:layout_marginRight="@dimen/fg.setting.btnScan.margin.biggest"
         android:background="@drawable/btn_dark"
         android:foreground="?attr/selectableItemBackground"
-        android:text="Сканировать"
+        android:text="@string/button.text.scan"
         android:textColor="@color/colorPrimaryDark" />
     </LinearLayout>
 
