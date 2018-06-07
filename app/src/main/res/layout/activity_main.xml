@@ -76,6 +76,7 @@
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:text="durov"
+          android:inputType="text"
           android:layout_gravity="center_vertical"
           android:background="@null"
           android:textColor="@color/colorPrimaryDark" />
