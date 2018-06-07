@@ -1,6 +1,7 @@
 package com.niko.likechecker.extensions
 
 import android.content.Context
+import android.os.Handler
 import android.support.v4.app.DialogFragment
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
@@ -19,11 +20,19 @@ fun logs(message: String) {
     if (debug) Log.d(tag, message)
 }
 
+fun Context.postExecute(time: Long = 4000, body: () -> Unit) {
+    Handler().postDelayed({ body() }, time)
+}
+
+fun Fragment.postExecute(time: Long = 4000, body: () -> Unit) {
+    Handler().postDelayed({ body() }, time)
+}
+
 fun AppCompatActivity.showDialog(dialogFragment: DialogFragment, tag: String = "default_dialog") {
     dialogFragment.show(supportFragmentManager, tag)
 }
 
-fun EditText.searchObservable() : Observable<String> {
+fun EditText.searchObservable(): Observable<String> {
     return Observable.create {
 
         val value = object : TextWatcher {

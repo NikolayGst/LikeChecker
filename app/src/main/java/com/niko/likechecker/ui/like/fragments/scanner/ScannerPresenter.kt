@@ -47,7 +47,7 @@ class ScannerPresenter : BasePresenter<ScannerView>() {
                             .concatMap { checkLike(setting.vkUserId.toString(), peopleId, it).map(::PhotoItem) }
                 }
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(viewState::onLikeSearched, viewState::onErrorLoad, viewState::onLikeSearchedEnd));
+                .subscribe(viewState::onLikeSearched, viewState::onErrorLoad, viewState::onLikeSearchedEnd))
 
     }
 

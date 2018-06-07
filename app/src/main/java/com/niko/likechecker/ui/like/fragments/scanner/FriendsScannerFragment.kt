@@ -8,11 +8,13 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
 import com.niko.likechecker.R
+import com.niko.likechecker.extensions.postExecute
 import com.niko.likechecker.extensions.toast
 import com.niko.likechecker.model.Setting
 import com.niko.likechecker.model.fastAdapterItems.PhotoItem
@@ -51,6 +53,7 @@ class FriendsScannerFragment : MvpAppCompatFragment(), ScannerView {
 
     @Subscribe
     fun settingEvent(setting: Setting) {
+        showProgress()
         itemAdapter.clear()
         scannerPresenter.startScanning(setting)
     }
@@ -60,11 +63,28 @@ class FriendsScannerFragment : MvpAppCompatFragment(), ScannerView {
     }
 
     override fun onLikeSearchedEnd() {
-        toast("Конец работы парсера")
+        hideProgress(getString(R.string.progress_success))
+        toast(getString(R.string.toast_scan_end), duration = Toast.LENGTH_LONG)
     }
 
     override fun onErrorLoad(throwable: Throwable) {
-       toast(throwable.localizedMessage)
+        hideProgress(getString(R.string.progress_failure))
+        toast(throwable.localizedMessage)
+    }
+
+    private fun showProgress() {
+        lrScan.visibility = View.VISIBLE
+        progressBar.visibility = View.VISIBLE
+        txtScanning.text = getString(R.string.progress_scanning)
+    }
+
+    private fun hideProgress(message: String) {
+        txtScanning.text = message
+        progressBar.visibility = View.GONE
+        postExecute {
+            lrScan.visibility = View.GONE
+        }
+
     }
 
     override fun onStart() {

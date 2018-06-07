@@ -59,7 +59,7 @@
             android:id="@+id/radioWeek"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="За наделю"
+            android:text="За неделю"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
             android:theme="@style/RadioButtonTheme" />
