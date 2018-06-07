@@ -18,6 +18,8 @@ class ScannerPresenter : BasePresenter<ScannerView>() {
 
     fun startScanning(setting: Setting) {
 
+        clearObservables()
+
         val peopleObservable = when (setting.peopleId) {
         //если 0, получаем у всех друзей их id
             0 -> getFriends(setting.vkUserId.toString())

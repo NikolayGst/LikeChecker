@@ -1,9 +1,8 @@
 package com.niko.likechecker.ui.common
 
-import com.niko.likechecker.extensions.logs
-
 import com.arellomobile.mvp.MvpPresenter
 import com.arellomobile.mvp.MvpView
+import com.niko.likechecker.extensions.logs
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
@@ -18,13 +17,17 @@ open class BasePresenter<V : MvpView> : MvpPresenter<V>() {
         compositeDisposable.add(disposable)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    fun clearObservables() {
         logs(" compositeDisposable.isDisposed(): " + compositeDisposable.isDisposed)
         //Если есть подписки, отписываем их
         if (!compositeDisposable.isDisposed) {
             compositeDisposable.clear()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        clearObservables()
     }
 
 }
