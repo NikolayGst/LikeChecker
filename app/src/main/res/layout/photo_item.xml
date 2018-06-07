@@ -28,7 +28,7 @@
         android:textColor="@android:color/black"
         android:textSize="@dimen/item.photo.text.size" />
 
-      <ImageView
+      <android.support.v7.widget.AppCompatImageView
         android:id="@+id/photo"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item.photo.size"
