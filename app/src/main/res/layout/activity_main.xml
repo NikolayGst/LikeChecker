@@ -1,5 +1,4 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
   android:id="@+id/activity_main"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
@@ -12,27 +11,20 @@
     android:src="@drawable/sea" />
 
 
-  <android.support.v7.widget.CardView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="@dimen/main.card.margin.big"
-    android:layout_centerHorizontal="true"
-    android:layout_centerVertical="true"
-    app:cardBackgroundColor="@color/transp"
-    app:cardCornerRadius="@dimen/main.card.corner.radius"
-    app:contentPadding="@dimen/main.card.content.padding">
-
-    <android.support.v7.widget.AppCompatImageView
-      android:id="@+id/exit"
-      android:layout_width="@dimen/main.exit.size"
-      android:layout_height="@dimen/main.exit.size"
-      android:layout_gravity="right"
-      android:src="@mipmap/ic_exit" />
-
     <LinearLayout
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/main.card.margin.big"
+      android:layout_height="match_parent"
+      android:background="@color/transp"
+      android:padding="@dimen/main.card.content.padding"
       android:orientation="vertical">
+
+      <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/exit"
+        android:layout_width="@dimen/main.exit.size"
+        android:layout_height="@dimen/main.exit.size"
+        android:layout_gravity="right"
+        android:src="@mipmap/ic_exit" />
 
       <TextView
         android:id="@+id/txtTitle"
@@ -45,7 +37,7 @@
         android:fontFamily="sans-serif-light"
         android:gravity="center"
         android:text="@string/textview.text.welcome"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/indicator"
         android:textSize="@dimen/main.title.text.size" />
 
       <TextView
@@ -58,7 +50,7 @@
         android:fontFamily="sans-serif-light"
         android:gravity="center"
         android:text="@string/textview.text.select.id"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/indicator"
         android:textSize="@dimen/main.desc.text.size" />
 
       <LinearLayout
@@ -79,7 +71,7 @@
           android:inputType="text"
           android:layout_gravity="center_vertical"
           android:background="@null"
-          android:textColor="@color/colorPrimaryDark" />
+          android:textColor="@color/indicator" />
 
         <android.support.v7.widget.AppCompatImageView
           android:id="@+id/selectFriend"
@@ -103,7 +95,7 @@
         android:fontFamily="sans-serif-light"
         android:gravity="center"
         android:text="@string/textview.text.selectScan"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/indicator"
         android:textSize="@dimen/main.selectScan.text.size" />
 
       <android.support.v7.widget.CardView
@@ -140,7 +132,6 @@
       </android.support.v7.widget.CardView>
 
     </LinearLayout>
-  </android.support.v7.widget.CardView>
 
 
 </RelativeLayout>

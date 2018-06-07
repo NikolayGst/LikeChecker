@@ -4,10 +4,21 @@
   <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
     <!-- Customize your theme here. -->
     <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     <item name="colorAccent">@color/colorAccent</item>
     <item name="windowActionBar">false</item>
     <item name="windowNoTitle">true</item>
+  </style>
+  
+  <style name="AppTheme.LoginTheme">
+    <item name="colorPrimaryDark">@color/colorPrimaryDarkLogin</item>
+  </style>
+
+  <style name="AppTheme.MainTheme">
+    <item name="colorPrimaryDark">@color/colorPrimaryDarkMain</item>
+  </style>
+
+  <style name="AppTheme.ScannerTheme">
+    <item name="colorPrimaryDark">@color/colorPrimaryDarkScanner</item>
   </style>
 
   <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
@@ -15,8 +26,8 @@
   <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
   <style name="RadioButtonTheme" parent="@style/AppTheme">
-    <item name="colorControlActivated">@color/colorPrimaryDark</item>
-    <item name="colorControlNormal">@color/colorPrimaryDark</item>
+    <item name="colorControlActivated">@color/indicator</item>
+    <item name="colorControlNormal">@color/indicator</item>
   </style>
 
   <style name="ProgressBar" parent="@style/AppTheme">

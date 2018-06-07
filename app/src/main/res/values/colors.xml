@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <color name="colorPrimary">#0cabf1</color>
-  <color name="colorPrimaryDark">#142955</color>
+  <color name="colorPrimaryDarkScanner">#142955</color>
+  <color name="colorPrimaryDarkLogin">#193d5a</color>
+  <color name="colorPrimaryDarkMain">#bcb8c8</color>
   <color name="blue_500">#0fa5e6</color>
+  <color name="indicator">#142955</color>
   <color name="colorAccent">#ffffff</color>
-  <color name="transp">#bcffffff</color>
+  <color name="transp">#afffffff</color>
   <color name="transp2">#D0FFFFFF</color>
 </resources>
