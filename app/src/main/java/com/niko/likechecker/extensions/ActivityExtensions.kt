@@ -24,8 +24,10 @@ fun Context.postExecute(time: Long = 4000, body: () -> Unit) {
     Handler().postDelayed({ body() }, time)
 }
 
-fun Fragment.postExecute(time: Long = 4000, body: () -> Unit) {
-    Handler().postDelayed({ body() }, time)
+fun Fragment.postExecute(time: Long = 4000, body: () -> Unit): Handler {
+    val handler = Handler()
+    handler.postDelayed({body()}, time)
+    return handler
 }
 
 fun AppCompatActivity.showDialog(dialogFragment: DialogFragment, tag: String = "default_dialog") {

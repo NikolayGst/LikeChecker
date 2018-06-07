@@ -113,7 +113,7 @@ fun getPhotos(id: String, time: Long, albomId: String = "profile"): Observable<L
     }
 }
 
-fun checkLike(userId: String, peopleId: String, photo: VKApiPhoto): Observable<Photo> {
+fun  checkLike(userId: String, peopleId: String, photo: VKApiPhoto): Observable<Photo> {
     return Observable.create {
 
         val likeRequest = VKRequest("likes.isLiked", VKParameters.from(

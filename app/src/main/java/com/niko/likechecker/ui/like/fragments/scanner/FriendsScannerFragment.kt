@@ -14,6 +14,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
 import com.niko.likechecker.R
+import com.niko.likechecker.extensions.logs
 import com.niko.likechecker.extensions.postExecute
 import com.niko.likechecker.extensions.toast
 import com.niko.likechecker.model.Setting
@@ -53,6 +54,7 @@ class FriendsScannerFragment : MvpAppCompatFragment(), ScannerView {
 
     @Subscribe
     fun settingEvent(setting: Setting) {
+        logs(setting.toString())
         showProgress()
         itemAdapter.clear()
         scannerPresenter.startScanning(setting)

@@ -43,9 +43,11 @@ class ScannerPresenter : BasePresenter<ScannerView>() {
                             .concatMapIterable { it }
                             //с задержкой 1 сек
                             .delaySecond(1)
+                            .doOnNext { logs("photoId: ${it.id}") }
                             //проверяем каждую фотографию человека/друга на лайк от проверяемого юзера
                             .concatMap { checkLike(setting.vkUserId.toString(), peopleId, it).map(::PhotoItem) }
                 }
+                .doOnNext { logs("like: ${it.photo.url}") }
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(viewState::onLikeSearched, viewState::onErrorLoad, viewState::onLikeSearchedEnd))
 

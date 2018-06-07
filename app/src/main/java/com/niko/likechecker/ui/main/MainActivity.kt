@@ -27,6 +27,22 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+       /* getAlbums(113124770.toString()).onErrorReturn { emptyList() }.concatMapIterable { it }
+                .delaySecond(1)
+                .doOnNext { logs("album $it") }
+                .concatMap { getPhotos(113124770.toString(), 1525467600000L, it.id).onErrorReturn { emptyList() }.concatMapIterable { it } }
+                .toList()
+                .toObservable()
+                .doOnNext { logs("photos: ${it.size}") }
+                //поэлементно перебираем фотографии
+                .concatMapIterable { it }
+                //с задержкой 1 сек
+                .delaySecond(1)
+                //проверяем каждую фотографию человека/друга на лайк от проверяемого юзера
+                .concatMap { checkLike("261550430", 113124770.toString(), it) }
+                .doOnNext { logs("like ${it.url}") }
+                .subscribe()*/
+
         selectFriend.setOnClickListener {
             mainPresenter.loadFriends()
         }
