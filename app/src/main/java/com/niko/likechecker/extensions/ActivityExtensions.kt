@@ -12,11 +12,7 @@ import android.widget.EditText
 import android.widget.Toast
 import io.reactivex.Observable
 
-val debug = true
-
-private val tag = "LikeChecker"
-
-fun logs(message: String) {
+fun logs(message: String, tag: String = "LikeChecker", debug: Boolean = false) {
     if (debug) Log.d(tag, message)
 }
 
@@ -26,7 +22,7 @@ fun Context.postExecute(time: Long = 4000, body: () -> Unit) {
 
 fun Fragment.postExecute(time: Long = 4000, body: () -> Unit): Handler {
     val handler = Handler()
-    handler.postDelayed({body()}, time)
+    handler.postDelayed({ body() }, time)
     return handler
 }
 
