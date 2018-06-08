@@ -1,6 +1,6 @@
 <resources>
   <string name="app_name">VKLikeChecker</string>
-  <string name="textview.text.desc.like">Чекер лайков Вконтакте</string>
+  <string name="textview.text.desc.like">Анализ лайков Вконтакте</string>
   <string name="textview.text.auth">Авторизация</string>
   <string name="button.text.login">Вход</string>
   <string name="textview.text.author">\@NikolayGst</string>

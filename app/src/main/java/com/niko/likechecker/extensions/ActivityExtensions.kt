@@ -1,7 +1,6 @@
 package com.niko.likechecker.extensions
 
 import android.content.Context
-import android.os.Handler
 import android.support.v4.app.DialogFragment
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
@@ -11,20 +10,20 @@ import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
 import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import java.util.concurrent.TimeUnit
 
 fun logs(message: String, tag: String = "LikeChecker", debug: Boolean = false) {
     if (debug) Log.d(tag, message)
 }
 
-fun Context.postExecute(time: Long = 4000, body: () -> Unit) {
-    Handler().postDelayed({ body() }, time)
+fun postExecute(time: Long = 4000, body: () -> Unit) : Disposable {
+    return Observable.timer(time, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
+            .map { body() }
+            .subscribe()
 }
 
-fun Fragment.postExecute(time: Long = 4000, body: () -> Unit): Handler {
-    val handler = Handler()
-    handler.postDelayed({ body() }, time)
-    return handler
-}
 
 fun AppCompatActivity.showDialog(dialogFragment: DialogFragment, tag: String = "default_dialog") {
     dialogFragment.show(supportFragmentManager, tag)

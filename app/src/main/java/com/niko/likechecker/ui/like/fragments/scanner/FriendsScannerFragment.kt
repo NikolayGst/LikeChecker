@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
@@ -18,12 +17,13 @@ import com.niko.likechecker.extensions.postExecute
 import com.niko.likechecker.extensions.toast
 import com.niko.likechecker.model.Setting
 import com.niko.likechecker.model.fastAdapterItems.PhotoItem
+import com.niko.likechecker.ui.common.BaseFragment
 import com.niko.likechecker.utils.toUri
 import kotlinx.android.synthetic.main.fragment_friends_scanner.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
-class FriendsScannerFragment : MvpAppCompatFragment(), ScannerView {
+class FriendsScannerFragment : BaseFragment(), ScannerView {
 
     @InjectPresenter
     lateinit var scannerPresenter: ScannerPresenter
@@ -83,9 +83,8 @@ class FriendsScannerFragment : MvpAppCompatFragment(), ScannerView {
     private fun hideProgress(message: String) {
         txtScanning.text = message
         progressBar.visibility = View.GONE
-        postExecute {
-            lrScan.visibility = View.GONE
-        }
+
+        track(postExecute { lrScan.visibility = View.GONE })
 
     }
 
